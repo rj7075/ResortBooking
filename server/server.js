@@ -3,6 +3,10 @@ import "dotenv/config";
 import cors from "cors";
 import mongoose from "mongoose";
 import { clerkMiddleware } from "@clerk/express";
+import clerkwebhook from "./Controllers/clerkwebHooks";
+
+const app = express();
+app.use(cors()); //Enable cross origin Resource Sharing
 mongoose
   .connect(
     "mongodb+srv://rj7075yadav:MGlrLghJubnRTv4S@cluster0.te58gpq.mongodb.net/HotelBooking"
@@ -10,12 +14,12 @@ mongoose
   .then(() => console.log("MongoDB Connected Successfully"))
   .catch((error) => console.log(error));
 
-app.use(cors()); //Enable cross origin Resource Sharing
-const app = express();
 //  clerkmiddleware
 
 app.use(express.json());
 app.use(clerkMiddleware());
+
+app.use("/api/clerk", clerkwebhook);
 
 app.get("/", (req, res) => res.send("API is Working good"));
 
