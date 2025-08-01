@@ -6,9 +6,9 @@ const clerkwebhook = async (req, res) => {
   try {
     const whook = new Webhook(process.env.CLERK_WEBHOOK_SECRET);
     const headers = {
-      "svix-id": request.headers["svix-id"],
-      "svix-timestamp": request.headers["svix-timestamp"],
-      "svix-signature": request.headers["svix-signature"],
+      "svix-id": request.headers[svix - id],
+      "svix-timestamp": request.headers[svix - timestamp],
+      "svix-signature": request.headers[svix - signature],
     };
 
     // verifying headers
@@ -20,7 +20,7 @@ const clerkwebhook = async (req, res) => {
     const userData = {
       _id: data.id,
       email: data.email_addresses[0].email_address,
-      userName: data.first_name + " " + data.last_name,
+      username: data.first_name + " " + data.last_name,
       image: data.image_url,
     };
 
