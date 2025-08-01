@@ -7,11 +7,11 @@ const UserSchema = new mongoose.Schema(
     email: { type: String, required: true },
     image: { type: String, required: true },
     role: { type: String, enum: ["user", "admin"], default: "user" },
-    RecentSearchCities: [{ type: String, required: true }],
-    //     RecentSearchCities: {
-    //   type: [String],
-    //   default: []
-    // }
+
+    RecentSearchCities: {
+      type: [String],
+      default: [],
+    },
   },
   { timestamps: true }
 );
